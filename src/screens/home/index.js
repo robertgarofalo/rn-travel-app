@@ -14,7 +14,7 @@ import { useEffect } from 'react';
 
 const ALL = 'All'
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const [selectedCategory, setSelectedCategory] = useState(ALL);
   const [data, setData] = useState([]);
 
@@ -66,6 +66,8 @@ const Home = () => {
                           title={item.name}
                           subtitle={item.city}
                           imageSrc={item.images[0]}
+                          navigation={navigation}
+                          item={item}
                       />
                   )}
                 />
