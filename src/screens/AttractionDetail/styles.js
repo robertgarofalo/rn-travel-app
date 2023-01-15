@@ -38,8 +38,26 @@ const styles = StyleSheet.create({
     miniImage: {
         width: 40,
         height: 40,
-        margin: 4,
+        marginHorizontal: 4,
+        marginVertical: 8,
+        borderRadius: 8
     },
+    moreImages: {
+        color: '#000',
+        fontWeight: 'bold',
+        fontSize: 20
+    },
+    moreImagesContainer: {
+        position: 'absolute',
+        backgroundColor: 'rgba(0,0,0,0.38)',
+        width: 40,
+        height: 40,
+        top: 8,
+        left: 4,
+        borderRadius: 8,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 })
 
 export default styles;

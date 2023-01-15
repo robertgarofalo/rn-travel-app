@@ -3,7 +3,10 @@ import styles from './styles';
 
 const AttractionDetails = ({ route, navigation }) => {
 const { item } = route?.params 
+
 const mainImage = item?.images?.length ? item?.images[0] : null
+const slicedImages = item?.images?.length ? item?.images?.slice(0,5) : []
+const diffImages = item?.images?.length - slicedImages?.length
 
 const onGalleryNavigate = () => {
   navigation.navigate('Gallery', {images: item?.images})
@@ -25,27 +28,18 @@ const onGalleryNavigate = () => {
             </Pressable>
           </View>
 
-          <View style={styles.footer}>
-            {item?.images?.length ? item?.images.map((image, index) => {
-
-            if (index >= 4){
-              return
-                }
-
-                console.log(image)
-
-              return (
-              <Pressable onPress={() => onGalleryNavigate()}>
-                <Image key={image} source={{uri: image}} style={styles.miniImage}
-                />
-              </Pressable>
-            )
-                
-          
-          }
-            
-            ) : null}
-          </View>
+          <Pressable onPress={() => onGalleryNavigate()} style={styles.footer}>
+            {slicedImages.map((image, index) => (
+              <View key={image}>
+                <Image key={image} source={{uri: image}} style={styles.miniImage}/>
+                {diffImages > 0 && index === slicedImages.length - 1 ? (
+                  <View style={styles.moreImagesContainer}>
+                    <Text style={styles.moreImages}>{`+${diffImages}`}</Text>
+                  </View>
+                ) : null}
+              </View>
+            ))}
+          </Pressable>
 
         </ImageBackground>
           <Text>{item.name}</Text >

@@ -5,6 +5,7 @@ const Gallery = () => {
 
   return (
       <SafeAreaView style={styles.container}>
+        <Text>Gallery</Text>
       </SafeAreaView>
   )
 }
